@@ -1,0 +1,52 @@
+using System;
+using System.Collections.Generic;
+
+namespace _7._Pascal_Triangle
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int number = int.Parse(Console.ReadLine());
+            if (number == 1)
+            {
+                Console.WriteLine("1");
+                return;
+            }
+            if (number == 2)
+            {
+                Console.WriteLine(1);
+                Console.Write("1 ");
+                Console.WriteLine("1");
+                return;
+            }            
+            
+                List<int> currentRow = new List<int>();
+                List<int> newRow = new List<int>();
+                currentRow.Add(1);
+                Console.WriteLine("1");
+                currentRow.Add(1);
+                Console.WriteLine("1 1");                
+            for (int i = 3; i <= number; i++)
+            {
+                newRow.Add(1);
+                for (int j = 1; j <= currentRow.Count - 1; j++)
+                {
+                    int nextValue = currentRow[j] + currentRow[j - 1];
+                    newRow.Add(nextValue);
+                }
+                newRow.Add(1);
+                Console.WriteLine(String.Join(" ", newRow));
+                currentRow = newRow;
+                for(int k=0;k<newRow.Count;k++)
+                {
+                    newRow.RemoveAt(0);
+                }
+            }
+
+            
+        }
+    }
+}
+    
+
