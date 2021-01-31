@@ -1,0 +1,35 @@
+using System;
+
+namespace Balanced_Brackets
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int number =int.Parse(Console.ReadLine());
+            bool isExistLeftBracket = false;
+            for (int i = 0; i <number; i++)
+            {
+                string line = Console.ReadLine();
+                if(line=="(")
+                {
+                    isExistLeftBracket = true;
+                }
+                if(line==")")
+                {
+                    if(isExistLeftBracket==false)
+                    {
+                        Console.WriteLine("UNBALANCED");
+                        return;
+                    }
+                    else
+                    {
+                        isExistLeftBracket = false;
+                    }
+                }
+            }
+            Console.WriteLine("BALANCED");
+
+        }
+    }
+}
