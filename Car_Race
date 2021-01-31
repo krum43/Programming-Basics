@@ -1,0 +1,70 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace _2._Car_Race
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var racetrack = Console.ReadLine()
+                .Split(" ")
+                .Select(int.Parse)
+                .ToList();
+
+            int finishLine = racetrack.Count / 2;
+
+            double leftRacerSum = 0;
+            double rightRacerSum = 0;
+
+            string winner = String.Empty;
+            double bestTime = 0;
+
+            var leftRacer = racetrack.GetRange(0, finishLine);
+            var rightRacer = racetrack.GetRange(finishLine + 1, finishLine);
+            rightRacer.Reverse();
+
+            foreach (var step in leftRacer)
+            {
+
+                int currentStepTime = step;
+
+                if (currentStepTime == 0)
+                {
+                    leftRacerSum *= 0.8;
+                    continue;
+                }
+
+                leftRacerSum += currentStepTime;
+            }
+
+            foreach (var step in rightRacer)
+            {
+
+                int currentStepTime = step;
+
+                if (currentStepTime == 0)
+                {
+                    rightRacerSum *= 0.8;
+                    continue;
+                }
+
+                rightRacerSum += currentStepTime;
+            }
+
+            if (leftRacerSum < rightRacerSum)
+            {
+                winner = "left";
+                bestTime = leftRacerSum;
+            }
+            else
+            {
+                winner = "right";
+                bestTime = rightRacerSum;
+            }
+
+            Console.WriteLine($"The winner is {winner} with total time: {bestTime:F1}");
+        }
+    }
+}
