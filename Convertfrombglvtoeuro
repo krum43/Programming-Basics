@@ -1,0 +1,18 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Convertfrombgtoeuro
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            decimal leva =decimal.Parse(Console.ReadLine());
+            decimal euro = leva/1.9558m;
+            Console.WriteLine($"{leva:f2} лева се равняват на {euro:f2} euro");
+        }
+    }
+}
