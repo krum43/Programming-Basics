@@ -1,0 +1,60 @@
+using System;
+
+namespace Cinema
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int capacity = int.Parse(Console.ReadLine());
+            int currentCapacity = capacity;
+            int praceOfTicket = 5;
+            int totalPrice = 0;
+            while(true)
+            {
+                string line = Console.ReadLine();
+                if(line== "Movie time!")
+                {
+                    if (currentCapacity >= 0)
+                    {
+                        Console.WriteLine($"There are {currentCapacity} seats left in the cinema.");
+                        Console.WriteLine($"Cinema income - {totalPrice}lv.");
+                        return;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"The cinema is full.");
+                        Console.WriteLine($"Cinema income - {totalPrice}lv.");
+                        return;
+                    }                    
+                }
+                int countOfPiepal = int.Parse(line);
+                if(countOfPiepal>currentCapacity)
+                {
+                    if (currentCapacity >= 0)
+                    {
+                        Console.WriteLine($"There are {currentCapacity} seats left in the cinema.");
+                        Console.WriteLine($"Cinema income - {totalPrice}lv.");
+                        return;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"The cinema is full.");
+                        Console.WriteLine($"Cinema income - {totalPrice}lv.");
+                        return;
+                    }
+                }
+                if(countOfPiepal%3==0)
+                {
+                    totalPrice += (countOfPiepal - 1) * praceOfTicket;
+                    currentCapacity -= countOfPiepal;
+                }
+                else
+                {
+                    totalPrice += (countOfPiepal) * praceOfTicket;
+                    currentCapacity -= countOfPiepal;
+                }
+            }
+        }
+    }
+}
