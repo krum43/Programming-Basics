@@ -1,0 +1,33 @@
+using System;
+using System.Globalization;
+
+namespace CountWorkingDays
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string StartDayStr = Console.ReadLine();
+            string endDayStr = Console.ReadLine();
+            DateTime startDay = DateTime.ParseExact(StartDayStr, "dd-MM-yyyy", CultureInfo.InvariantCulture);
+            DateTime enddDay = DateTime.ParseExact(endDayStr, "dd-MM-yyyy", CultureInfo.InvariantCulture);
+            DateTime[] notWorkinkDays = new DateTime[] {DateTime.Parse("01-01-2010"),DateTime.Parse("03-03-2010"),DateTime.Parse("01 - 01 - 2010"),DateTime.Parse("01-05-2010"),DateTime.Parse("06-05-2010"),DateTime.Parse("24-05-2010"),DateTime.Parse("06-09-2010"),DateTime.Parse("22-09-2010"),DateTime.Parse("01-11-2010"),DateTime.Parse("24-12-2010"),DateTime.Parse("25-12-2010"),DateTime.Parse("26-12-2010")};
+            int countWorkongDays = 0;
+            for (var i = startDay; i <= enddDay; i.AddDays(1))
+            {
+                if(!(i.DayOfWeek == DayOfWeek.Saturday)&&!(i.DayOfWeek == DayOfWeek.Sunday))
+                {
+                    foreach (var date in notWorkinkDays)
+                    {
+                        if(!(date==i))
+                        {
+                            countWorkongDays++;
+                        }
+                      
+                    }
+                }
+            }
+            Console.WriteLine(countWorkongDays);
+        }
+    }
+}
