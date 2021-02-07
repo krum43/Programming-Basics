@@ -1,0 +1,58 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace Edurance_Rally
+    {
+        class Program
+        {
+            static void Main(string[] args)
+            {
+                string draiversnames = Console.ReadLine();
+                string tracklayotzones = Console.ReadLine();
+                string chekpoint = Console.ReadLine();
+                string[] draiversnamesplit = draiversnames.Split();
+                double[] tracklayotzonessplit = tracklayotzones.Split().Select(double.Parse).ToArray();
+                int[] checkpointsplit = chekpoint.Split().Select(int.Parse).ToArray();
+                int reachzone = 0;
+                foreach (var name in draiversnamesplit)
+                {
+                    int startingfuel = (int)name[0];
+                    double fuel = startingfuel;
+
+                    for (int index = 0; index < tracklayotzonessplit.Length; index++)
+                    {
+                        if (checkpointsplit.Contains(index))
+                        {
+                            fuel += index;
+                        }
+                        else
+                        {
+                            fuel -= index;
+                            if (fuel < 0)
+                            {
+                                reachzone = index;
+                                Console.WriteLine($"{name} reached {reachzone}");
+                                break;
+                            }
+                            else
+                            {
+                               if (index == tracklayotzonessplit.Length - 1)
+                               {
+                                 Console.WriteLine($"{name} - fuel left {fuel:f2}");
+                               }
+                            }
+
+                        }
+                    }
+                }
+
+
+
+            }
+        }
+    }
+
