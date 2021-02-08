@@ -1,0 +1,50 @@
+using System;
+
+namespace Hotel_Room
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string month = Console.ReadLine();
+            int countOfNights = int.Parse(Console.ReadLine());
+            double priceForStudio = 0;
+            double priceForApartament = 0;
+            if ((month == "May") || (month == "October"))
+            {
+                priceForStudio = countOfNights * 50;
+                priceForApartament = countOfNights * 65;
+                if ((countOfNights > 7) || (countOfNights <=14))
+                {
+                    priceForStudio = priceForStudio *0.95;
+                }
+                if (countOfNights > 14)
+                {
+                    priceForStudio = priceForStudio *0.70;
+                    priceForApartament = priceForApartament *0.90;
+                }
+            }
+            if ((month == "June") || (month == "September"))
+            {
+                priceForStudio = countOfNights *75.20;
+                priceForApartament = countOfNights *68.70;
+                if (countOfNights > 14)
+                {
+                    priceForStudio = priceForStudio *0.80;
+                    priceForApartament = priceForApartament *0.90;
+                }
+            }
+            if((month == "July")|| (month == "August"))
+            {
+                        priceForStudio = countOfNights * 76;
+                        priceForApartament = countOfNights * 77;
+                        if(countOfNights>14)
+                        {
+                            priceForApartament = priceForApartament*0.90;
+                        }
+            }
+            Console.WriteLine($"Apartment: {priceForApartament:f2} lv.");
+            Console.WriteLine($"Studio {priceForStudio:f2} lv.");
+        }
+    }
+}
