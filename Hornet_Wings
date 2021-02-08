@@ -1,0 +1,25 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Numerics;
+
+namespace Hornet_Wings
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            long numberofwingsflaps = long.Parse(Console.ReadLine());
+            double Distanceforhundertwingflaps = double.Parse(Console.ReadLine());
+            int Endurance = int.Parse(Console.ReadLine());
+            double Distance =(double)(numberofwingsflaps / 1000) * Distanceforhundertwingflaps;
+            long timeinsecund = numberofwingsflaps / 100;
+            long rest = (numberofwingsflaps / Endurance) * 5;
+            long totaltime = timeinsecund + rest;
+            Console.WriteLine($"{Distance:f2} m.");
+            Console.WriteLine($"{totaltime} s.");
+        }
+    }
+}
