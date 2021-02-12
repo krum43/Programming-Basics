@@ -1,0 +1,39 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Multiplay_Even_By_Odd
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string line = Console.ReadLine();
+            int SumEven = 0;
+            int SumOdd = 0;
+            int output = 0;
+            for (int i = 0; i < line.Length; i++)
+            {
+                if (line[i] == '-')
+                {
+                    continue;
+                }
+                else
+                {
+                    if (line[i] % 2 == 0)
+                    {
+                        SumEven +=int.Parse(line[i].ToString());
+                    }
+                    else
+                    {
+                        SumOdd +=int.Parse(line[i].ToString());
+                    }
+                }
+            }
+            output = SumEven * SumOdd;
+            Console.WriteLine(output);
+        }
+    }
+}
