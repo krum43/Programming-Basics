@@ -1,0 +1,27 @@
+  double cost = 0;
+        bool invalidInput = false;
+ 
+        if (dayOfWeek.equals("Monday") || dayOfWeek.equals("Tuesday") || dayOfWeek.equals("Wednesday") ||
+                dayOfWeek.equals("Thursday") || dayOfWeek.equals("Friday")) {
+ 
+            if (fruit.equals("banana")) {
+                cost = 2.50;
+            } else if (fruit.equals("apple")) {
+            // .....
+            } else {
+                invalidInput = true; // invalid fruit
+            }
+        } else if (dayOfWeek.equals("Saturday") || dayOfWeek.equals("Sunday")) {
+ 
+            // .....
+        } else {
+            invalidInput = true; // invalid day
+        }
+
+
+        if (invalidInput) {
+           System.out.println("error");
+        } else {
+            double result = cost * quantity;
+            System.out.printf("%.2f", result);
+        }
